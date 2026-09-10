@@ -1,0 +1,15 @@
+{
+  "name": "ansh-associates",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ANSH ASSOCIATES — premium real estate landing page. Static site, no build step.",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "dev": "node scripts/serve.mjs",
+    "test": "node scripts/verify.mjs && node scripts/smoke-boot.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

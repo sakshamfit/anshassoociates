@@ -3,14 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>ANSH ASSOCIATES - Premium Real Estate</title>
-    <meta name="description" content="ANSH ASSOCIATES - Your trusted partner in premium real estate. Discover luxury properties, commercial spaces, and investment opportunities.">
+    <title>ANSH ASSOCIATES — Premium Real Estate</title>
+    <meta name="description" content="ANSH ASSOCIATES — your trusted partner in premium real estate. Curated luxury residences, commercial space and investment advisory across India.">
+    <meta name="theme-color" content="#FFF8F0">
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ANSH ASSOCIATES">
+    <meta property="og:title" content="ANSH ASSOCIATES — Premium Real Estate">
+    <meta property="og:description" content="Curated luxury residences, commercial space and investment advisory across India.">
+    <meta property="og:image" content="assets/img/hero.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+    <link rel="apple-touch-icon" href="assets/img/logo.svg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Jost:wght@300;400;500&family=Tiro+Devanagari+Hindi:wght@400;600&display=swap">
-    <link rel="preload" as="image" href="assets/img/logo.svg">
-    <link rel="preload" as="image" href="assets/img/hero.jpg">
+
+    <link rel="preload" as="image" href="assets/img/hero.jpg" fetchpriority="high">
+
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/intro.css">
     <link rel="stylesheet" href="css/hero.css">
@@ -19,12 +32,40 @@
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/testimonials.css">
     <link rel="stylesheet" href="css/contact.css">
+    <!-- Loaded last: repairs markup/CSS drift and styles the new components. -->
+    <link rel="stylesheet" href="css/supplement.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "ANSH ASSOCIATES",
+      "image": "assets/img/logo.svg",
+      "telephone": "+91-98765-43210",
+      "email": "info@anshassociates.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Prestige Towers, MG Road",
+        "addressLocality": "Bangalore",
+        "addressRegion": "Karnataka",
+        "postalCode": "560001",
+        "addressCountry": "IN"
+      },
+      "areaServed": "IN",
+      "priceRange": "₹₹₹₹"
+    }
+    </script>
+
+    <!-- Without JS the intro panel would cover the page forever. -->
+    <noscript><style>#intro{display:none}</style></noscript>
 </head>
 <body>
 
   <!-- ═══ GLOBAL HEADER ═══ -->
   <header id="siteHeader">
-      <div id="logoSlot" aria-hidden="true"></div>
+      <a id="logoSlot" class="logo-slot" href="#hero" aria-label="ANSH ASSOCIATES — home">
+        <img id="logo-header" src="assets/img/logo.svg" alt="" width="200" height="200" draggable="false">
+      </a>
 
       <nav id="mainNav" aria-label="Primary">
         <a class="nav-link is-active" href="#hero" data-i18n="nav.home">Home</a>
@@ -37,39 +78,32 @@
 
       <div class="header-utils">
         <div class="lang-switch" role="group" aria-label="Language">
-          <button class="lang-btn is-active" data-lang="en" aria-pressed="true">English</button>
+          <button class="lang-btn is-active" type="button" data-lang="en" aria-pressed="true">English</button>
           <span class="lang-sep" aria-hidden="true"></span>
-          <button class="lang-btn" data-lang="hi" lang="hi" aria-pressed="false">हिन्दी</button>
+          <button class="lang-btn" type="button" data-lang="hi" lang="hi" aria-pressed="false">हिन्दी</button>
         </div>
 
         <span class="utils-divider" aria-hidden="true"></span>
 
-        <button class="icon-btn search-btn" aria-label="Search" data-i18n-aria="aria.search">
+        <button class="icon-btn search-btn" type="button" aria-label="Search" aria-expanded="false" aria-controls="siteSearch" data-i18n-aria="aria.search">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <circle cx="10.5" cy="10.5" r="6.2" stroke="currentColor" stroke-width="1.4"/>
             <path d="m15.2 15.2 4.6 4.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
           </svg>
         </button>
-        <a class="icon-btn account-btn" href="account.html" aria-label="Account" data-i18n-aria="aria.account">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="12" cy="8.4" r="3.6" stroke="currentColor" stroke-width="1.4"/>
-            <path d="M4.8 20a7.2 7.2 0 0 1 14.4 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-          </svg>
-        </a>
-        <a class="icon-btn wish-btn" href="wishlist.html" aria-label="Wishlist" data-i18n-aria="aria.wishlist">
+        <a class="icon-btn wish-btn" href="#properties" aria-label="Wishlist" data-i18n-aria="aria.wishlist">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M12 20s-7-4.6-9-9c-1.2-2.8.4-6 3.4-6.4C8.4 4.3 10.6 5 12 7c1.4-2 3.6-2.7 5.6-2.4 3 .4 4.6 3.6 3.4 6.4-2 4.4-9 9-9 9Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
           </svg>
           <span class="cart-count wish-count" aria-hidden="true">0</span>
         </a>
-        <a class="icon-btn cart-btn" href="cart.html" aria-label="Enquiries" data-i18n-aria="aria.bag">
+        <a class="icon-btn cart-btn" href="#contact" aria-label="Enquiries" data-i18n-aria="aria.bag">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M5.5 8.2h13l-.9 11.1a1.6 1.6 0 0 1-1.6 1.5H8a1.6 1.6 0 0 1-1.6-1.5L5.5 8.2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
             <path d="M8.8 8V6.8a3.2 3.2 0 0 1 6.4 0V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
           </svg>
-          <span class="cart-count" aria-hidden="true">0</span>
         </a>
-        <button class="icon-btn menu-btn" aria-label="Menu" data-i18n-aria="aria.menu">
+        <button class="icon-btn menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu" data-i18n-aria="aria.menu">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M3.5 7h17M3.5 12h17M3.5 17h17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
           </svg>
@@ -79,9 +113,22 @@
       <span class="header-rule" aria-hidden="true"></span>
   </header>
 
+  <!-- ═══ SEARCH PANEL ═══ -->
+  <div id="siteSearch" class="site-search" role="search">
+    <div class="site-search-inner">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="10.5" cy="10.5" r="6.2" stroke="currentColor" stroke-width="1.4"/>
+        <path d="m15.2 15.2 4.6 4.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <label class="sr-only" for="siteSearchInput" data-i18n="search.label">Search properties</label>
+      <input id="siteSearchInput" type="search" autocomplete="off"
+             data-i18n-placeholder="search.placeholder" placeholder="Search by name, city or feature…">
+    </div>
+  </div>
+
   <!-- ═══ MOBILE MENU ═══ -->
   <div id="mobileMenu" aria-hidden="true">
-    <button class="mm-close" aria-label="Close menu">
+    <button class="mm-close" type="button" aria-label="Close menu">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </button>
     <nav class="mm-nav" aria-label="Menu">
@@ -91,29 +138,29 @@
       <a class="mm-link" href="#about" data-i18n="nav.about">About Us</a>
       <a class="mm-link" href="#testimonials" data-i18n="nav.testimonials">Testimonials</a>
       <a class="mm-link" href="#contact" data-i18n="nav.contact">Contact</a>
-      <a class="mm-link" href="cart.html" data-i18n="com.bag">Enquiries</a>
-      <a class="mm-link" href="wishlist.html" data-i18n="com.wishlist">Wishlist</a>
-      <a class="mm-link" href="account.html" data-i18n="com.account">Account</a>
     </nav>
     <div class="mm-rule" aria-hidden="true"></div>
     <div class="lang-switch mm-lang" role="group" aria-label="Language">
-      <button class="lang-btn is-active" data-lang="en" aria-pressed="true">English</button>
+      <button class="lang-btn is-active" type="button" data-lang="en" aria-pressed="true">English</button>
       <span class="lang-sep" aria-hidden="true"></span>
-      <button class="lang-btn" data-lang="hi" lang="hi" aria-pressed="false">हिन्दी</button>
+      <button class="lang-btn" type="button" data-lang="hi" lang="hi" aria-pressed="false">हिन्दी</button>
     </div>
-    <a class="mm-ig" href="https://www.google.com/maps/search/?api=1&query=ANSH+ASSOCIATES+Real+Estate" target="_blank" rel="noopener">Find Us on Google Maps</a>
+    <a class="mm-ig" href="https://www.google.com/maps/search/?api=1&query=ANSH+ASSOCIATES+MG+Road+Bangalore" target="_blank" rel="noopener">Find Us on Google Maps</a>
   </div>
 
-  <!-- ═══ HERO (revealed by the intro) ═══ -->
-  <section id="hero" aria-label="ANSH ASSOCIATES - Premium Real Estate">
+  <main>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero" aria-label="ANSH ASSOCIATES — Premium Real Estate">
     <div id="heroFrame">
-      <img id="heroImg" src="assets/img/hero.jpg" alt="Modern luxury property exterior" draggable="false">
+      <img id="heroImg" src="assets/img/hero.jpg" width="1376" height="768" fetchpriority="high"
+           alt="Modern luxury residence at golden hour" draggable="false">
       <div class="hero-grade" aria-hidden="true"></div>
     </div>
 
     <div class="hero-copy">
       <p class="eyebrow" data-reveal data-i18n="hero.eyebrow">Premium Properties for</p>
-      <h1 class="display" data-reveal>
+      <h1 class="display">
         <span class="display-line">
           <span class="display-word" data-i18n="hero.display">Discerning Clients</span>
           <svg class="swash" viewBox="0 0 560 96" fill="none" aria-hidden="true" preserveAspectRatio="none">
@@ -123,7 +170,7 @@
         </span>
       </h1>
       <p class="subline" data-reveal data-i18n="hero.subline">ANSH ASSOCIATES — Where luxury meets opportunity</p>
-      <a class="cta" href="#properties" data-goto="#properties" data-reveal>
+      <a class="cta" href="#properties">
         <span data-i18n="hero.cta">Explore Our Properties</span>
         <svg viewBox="0 0 26 12" fill="none" aria-hidden="true">
           <path d="M1 6h23m0 0-4.6-4.6M24 6l-4.6 4.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -186,13 +233,13 @@
     </div>
   </section>
 
-  <!-- ═══ PROPERTIES SECTION ═══ -->
-  <section id="properties" class="prop" aria-label="Our Premium Properties">
+  <!-- ═══ PROPERTIES ═══ -->
+  <section id="properties" class="prop" aria-label="Our premium properties">
     <div class="prop-shadow" aria-hidden="true"></div>
     <div class="prop-corner-tr" aria-hidden="true"></div>
     <div class="prop-corner" aria-hidden="true"></div>
     <div class="prop-florals" aria-hidden="true">
-      <img src="assets/img/line-florals.png" alt="" draggable="false">
+      <img src="assets/img/line-florals.svg" alt="" draggable="false">
     </div>
 
     <div class="prop-statement">
@@ -208,41 +255,27 @@
       <p class="prop-eyebrow" data-i18n="prop.eyebrow">Featured Properties</p>
       <h2 class="prop-heading" data-i18n="prop.heading">Luxury Living Spaces</h2>
       <p class="prop-sub" data-i18n="prop.sub">Carefully curated residential and commercial properties for the discerning investor.</p>
-      <a class="prop-cta" href="properties.html">
-        <span data-i18n="prop.cta">View All Properties</span>
-        <svg viewBox="0 0 26 12" fill="none" aria-hidden="true">
-          <path d="M1 6h23m0 0-4.6-4.6M24 6l-4.6 4.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
     </div>
 
     <p class="prop-ethos" data-i18n="prop.ethos">Quality<br>Location<br>Value</p>
 
     <ul class="prop-grid" id="propGrid"></ul>
 
+    <p class="prop-empty" id="propEmpty" hidden data-i18n="prop.empty">No properties match your search.</p>
+
     <div class="prop-nav">
       <span class="prop-count">
-        <span id="propCurrent">01</span>
+        <span id="propCount">04</span>
         <span class="prop-count-rule"></span>
-        <span>04</span>
+        <span data-i18n="prop.countLabel">Listings</span>
       </span>
-      <button class="prop-arrow" id="propPrev" aria-label="Previous">
-        <svg viewBox="0 0 10 16" fill="none" aria-hidden="true">
-          <path d="M8.5 1.5 2 8l6.5 6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <button class="prop-arrow" id="propNext" aria-label="Next">
-        <svg viewBox="0 0 10 16" fill="none" aria-hidden="true">
-          <path d="M1.5 1.5 8 8l-6.5 6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
     </div>
   </section>
 
-  <!-- ═══ SERVICES SECTION ═══ -->
-  <section id="services" class="serv" aria-label="Our Real Estate Services">
-    <div class="serv-blossoms" aria-hidden="true"><img src="assets/img/blossoms.png" alt="" draggable="false"></div>
-    <div class="serv-leaves" aria-hidden="true"><img src="assets/img/gold-leaves.png" alt="" draggable="false"></div>
+  <!-- ═══ SERVICES ═══ -->
+  <section id="services" class="serv" aria-label="Our real estate services">
+    <div class="serv-blossoms" aria-hidden="true"><img src="assets/img/blossoms.svg" alt="" draggable="false"></div>
+    <div class="serv-leaves" aria-hidden="true"><img src="assets/img/gold-leaves.svg" alt="" draggable="false"></div>
 
     <header class="serv-head">
       <svg class="serv-ornament" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -266,155 +299,119 @@
     </footer>
   </section>
 
-  <!-- ═══ ABOUT SECTION ═══ -->
+  <!-- ═══ ABOUT ═══ -->
   <section id="about" class="about" aria-label="About ANSH ASSOCIATES">
     <div class="about-shadow" aria-hidden="true"></div>
-    <div class="about-florals" aria-hidden="true"><img src="assets/img/line-florals.png" alt="" draggable="false"></div>
+    <div class="about-florals" aria-hidden="true"><img src="assets/img/line-florals.svg" alt="" draggable="false"></div>
 
-    <div class="about-copy">
-      <p class="abt-eyebrow" data-i18n="abt.eyebrow">About Us</p>
-      <h2 class="abt-heading" data-i18n="abt.heading">ANSH ASSOCIATES</h2>
-      <div class="abt-divider" aria-hidden="true">
-        <svg class="or-ornament" viewBox="0 0 24 24" fill="none">
-          <path d="M12 2c1.2 3.1 2.4 4.6 5 5.6-2.6 1-3.8 2.5-5 5.6-1.2-3.1-2.4-4.6-5-5.6 2.6-1 3.8-2.5 5-5.6Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <p class="abt-support" data-i18n="abt.support">Founded on principles of trust, integrity, and excellence, ANSH ASSOCIATES has emerged as a premier real estate firm specializing in luxury properties and investment opportunities.</p>
-    </div>
+    <header class="about-head">
+      <p class="about-eyebrow" data-i18n="abt.eyebrow">About Us</p>
+      <h2 class="about-heading" data-i18n="abt.heading">ANSH ASSOCIATES</h2>
+      <p class="about-support" data-i18n="abt.support">Founded on principles of trust, integrity and excellence, ANSH ASSOCIATES has emerged as a premier real estate firm specialising in luxury properties and investment opportunities.</p>
+    </header>
 
-    <div class="about-media">
-      <img src="assets/img/about/team.jpg" alt="ANSH ASSOCIATES professional team" draggable="false">
-    </div>
+    <p class="about-side" data-i18n="abt.side">Est.<br>Trust · Craft</p>
 
-    <div class="abt-info">
-      <article class="abt-block">
-        <span class="abt-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.6l2.5 5.1 5.6.8-4 3.9.9 5.6-5-2.6-5 2.6.9-5.6-4-3.9 5.6-.8L12 3.6Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+    <figure class="about-media">
+      <img src="assets/img/about/team.jpg" width="1408" height="768" loading="lazy" decoding="async"
+           data-i18n-alt="abt.media.alt" alt="The ANSH ASSOCIATES advisory team" draggable="false">
+    </figure>
+
+    <div class="about-content">
+      <article class="about-card" data-reveal>
+        <span class="about-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.6l2.5 5.1 5.6.8-4 3.9.9 5.6-5-2.6-5 2.6.9-5.6-4-3.9 5.6-.8L12 3.6Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
         </span>
-        <div>
-          <h3 class="abt-title" data-i18n="abt.mission.t">Our Mission</h3>
-          <p class="abt-line"><span data-i18n="abt.mission.line">To provide unparalleled real estate services that exceed client expectations while maintaining the highest standards of professionalism and ethics.</span></p>
-          <p class="abt-note" data-i18n="abt.mission.note">Client satisfaction is our priority.</p>
-        </div>
+        <h3 class="about-title" data-i18n="abt.mission.t">Our Mission</h3>
+        <p class="about-text" data-i18n="abt.mission.line">To provide unparalleled real estate services that exceed client expectations while maintaining the highest standards of professionalism and ethics.</p>
+        <p class="about-note" data-i18n="abt.mission.note">Client satisfaction is our priority.</p>
       </article>
 
-      <article class="abt-block">
-        <span class="abt-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.4" stroke="currentColor" stroke-width="1.3"/><path d="M12 7.6V12l3.1 2.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <article class="about-card" data-reveal style="--stagger:1">
+        <span class="about-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.4" stroke="currentColor" stroke-width="1.3"/><path d="M12 7.6V12l3.1 2.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
-        <div>
-          <h3 class="abt-title" data-i18n="abt.vision.t">Our Vision</h3>
-          <p class="abt-line" data-i18n="abt.vision.line">To be the most trusted real estate brand known for integrity, innovation, and exceptional client service.</span></p>
-          <p class="abt-note" data-i18n="abt.vision.note">Building lasting relationships one property at a time.</p>
-        </div>
+        <h3 class="about-title" data-i18n="abt.vision.t">Our Vision</h3>
+        <p class="about-text" data-i18n="abt.vision.line">To be the most trusted real estate brand, known for integrity, innovation and exceptional client service.</p>
+        <p class="about-note" data-i18n="abt.vision.note">Building lasting relationships one property at a time.</p>
       </article>
 
-      <article class="abt-block">
-        <span class="abt-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s6.5-5.6 6.5-10.5A6.5 6.5 0 0 0 5.5 10.5C5.5 15.4 12 21 12 21Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="12" cy="10.3" r="2.3" stroke="currentColor" stroke-width="1.3"/></svg>
+      <article class="about-card" data-reveal style="--stagger:2">
+        <span class="about-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s6.5-5.6 6.5-10.5A6.5 6.5 0 0 0 5.5 10.5C5.5 15.4 12 21 12 21Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="12" cy="10.3" r="2.3" stroke="currentColor" stroke-width="1.3"/></svg>
         </span>
-        <div>
-          <h3 class="abt-title" data-i18n="abt.values.t">Our Values</h3>
-          <p class="abt-line" data-i18n="abt.values.line">Trust • Integrity • Excellence • Innovation • Client-Centric Approach</p>
-          <p class="abt-note" data-i18n="abt.values.note">The foundation of everything we do.</p>
-        </div>
+        <h3 class="about-title" data-i18n="abt.values.t">Our Values</h3>
+        <p class="about-text" data-i18n="abt.values.line">Trust · Integrity · Excellence · Innovation · Client-Centric Approach</p>
+        <p class="about-note" data-i18n="abt.values.note">The foundation of everything we do.</p>
       </article>
     </div>
+
+    <footer class="about-foot">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2c1.2 3.1 2.4 4.6 5 5.6-2.6 1-3.8 2.5-5 5.6-1.2-3.1-2.4-4.6-5-5.6 2.6-1 3.8-2.5 5-5.6Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
+      </svg>
+      <p data-i18n="abt.foot">Two decades of discretion, diligence and delivered outcomes.</p>
+    </footer>
   </section>
 
-  <!-- ═══ TESTIMONIALS SECTION ═══ -->
-  <section id="testimonials" class="test" aria-label="Client Testimonials">
+  <!-- ═══ TESTIMONIALS ═══ -->
+  <section id="testimonials" class="test" aria-label="Client testimonials">
     <div class="test-shadow" aria-hidden="true"></div>
-    <div class="test-florals" aria-hidden="true"><img src="assets/img/line-florals.png" alt="" draggable="false"></div>
+    <div class="test-florals" aria-hidden="true"><img src="assets/img/line-florals.svg" alt="" draggable="false"></div>
 
-    <div class="test-copy">
-      <p class="tst-eyebrow" data-i18n="tst.eyebrow">What Our Clients Say</p>
-      <h2 class="tst-heading" data-i18n="tst.heading">Client Experiences</h2>
-      <div class="tst-divider" aria-hidden="true">
-        <svg class="or-ornament" viewBox="0 0 24 24" fill="none">
-          <path d="M12 2c1.2 3.1 2.4 4.6 5 5.6-2.6 1-3.8 2.5-5 5.6-1.2-3.1-2.4-4.6-5-5.6 2.6-1 3.8-2.5 5-5.6Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <p class="tst-support" data-i18n="tst.support">Hear from satisfied clients who have experienced the ANSH ASSOCIATES difference.</p>
-    </div>
+    <header class="test-head">
+      <p class="test-eyebrow" data-i18n="tst.eyebrow">What Our Clients Say</p>
+      <h2 class="test-heading" data-i18n="tst.heading">Client Experiences</h2>
+      <p class="test-support" data-i18n="tst.support">Hear from clients who have experienced the ANSH ASSOCIATES difference.</p>
+    </header>
 
-    <div class="test-media">
-      <div class="test-block">
-        <span class="test-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.1c1.3-1.1 2.5-2.1 3.4-2.9 1.3-1.2 2.4-.6 3.1.7.9 1.5.1 3 .6 4.1-.6 1.4-1.9 1.3-3.2.5-4.1-.9-3-1.5-.1-3-.7-4.1-.6-1.4-1.1-2.5-2.1-3.4-2.9-1.3-1.2-2.4-.6-3.1-.7-.9-1.5-.1-3-.6-4.1.6-1.4 1.3 3.2-.5 4.1.9 3 1.5.1 3 .7 4.1z" stroke="currentColor" stroke-width="1.3"/></svg>
-        </span>
-        <div>
-          <h3 class="tst-title" data-i18n="tst.name">Rajesh Kumar</h3>
-          <p class="tst-rating"><span aria-hidden="true">★★★★★</span> 5/5 Rating</p>
-          <p class="tst-text" data-i18n="tst.text">"ANSH ASSOCIATES helped me find my dream luxury apartment. Their professionalism, attention to detail, and commitment to client satisfaction made the entire process seamless and enjoyable."</p>
-          <p class="tst-meta" data-i18n="tst.meta">Mumbai, Maharashtra • March 2024</p>
-        </div>
-      </div>
+    <p class="test-side" data-i18n="tst.side">Trusted<br>Coast to Coast</p>
 
-      <div class="test-block">
-        <span class="test-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.1c1.3-1.1 2.5-2.1 3.4-2.9 1.3-1.2 2.4-.6 3.1.7.9 1.5.1 3 .6 4.1-.6 1.4-1.9 1.3-3.2.5-4.1-.9-3-1.5-.1-3-.7-4.1-.9-3-1.5-.1-3-.7-4.1-.6-1.4-1.1-2.5-2.1-3.4-2.9-1.3-1.2-2.4-.6-3.1-.7-.9-1.5-.1-3-.6-4.1.6-1.4 1.3 3.2-.5 4.1.9 3 1.5.1 3 .7 4.1z" stroke="currentColor" stroke-width="1.3"/></svg>
-        </span>
-        <div>
-          <h3 class="tst-title" data-i18n="tst.name">Priya Sharma</h3>
-          <p class="tst-rating"><span aria-hidden="true">★★★★★</span> 5/5 Rating</p>
-          <p class="tst-text" data-i18n="tst.text">"As an investor, I've worked with several real estate firms, but ANSH ASSOCIATES stands out for their market knowledge, transparency, and dedication to maximizing returns on investment."</p>
-          <p class="tst-meta" data-i18n="tst.meta">Delhi NCR • January 2024</p>
-        </div>
-      </div>
+    <!-- Rendered by js/render.js from js/data.js -->
+    <div class="test-media" id="testWall"></div>
 
-      <div class="test-block">
-        <span class="test-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.1c1.3-1.1 2.5-2.1 3.4-2.9 1.3-1.2 2.4-.6 3.1.7.9 1.5.1 3 .6 4.1-.6 1.4-1.9 1.3-3.2.5-4.1-.9-3-1.5-.1-3-.7-4.1-.9-3-1.5-.1-3-.7-4.1-.6-1.4-1.1-2.5-2.1-3.4-2.9-1.3-1.2-2.4-.6-3.1-.7-.9-1.5-.1-3-.6-4.1.6-1.4 1.3 3.2-.5 4.1.9 3 1.5.1 3 .7 4.1z" stroke="currentColor" stroke-width="1.3"/></svg>
-        </span>
-        <div>
-          <h3 class="tst-title" data-i18n="tst.name">Amit Patel</h3>
-          <p class="tst-rating"><span aria-hidden="true">★★★★★</span> 5/5 Rating</p>
-          <p class="tst-text" data-i18n="tst.text">"The team at ANSH ASSOCIATES exceeded my expectations in every way. From the initial consultation to the final closing, they provided expert guidance and support throughout my commercial property purchase."</p>
-          <p class="tst-meta" data-i18n="tst.meta">Bangalore, Karnataka • February 2024</p>
-        </div>
-      </div>
-    </div>
+    <footer class="test-foot">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2c1.2 3.1 2.4 4.6 5 5.6-2.6 1-3.8 2.5-5 5.6-1.2-3.1-2.4-4.6-5-5.6 2.6-1 3.8-2.5 5-5.6Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
+      </svg>
+      <p data-i18n="tst.foot">Every engagement begins with listening — and ends with a signed deed.</p>
+    </footer>
   </section>
 
-  <!-- ═══ CONTACT — the closing chapter ═══ -->
+  <!-- ═══ CONTACT ═══ -->
   <section id="contact" aria-label="Contact ANSH ASSOCIATES">
     <div class="con">
       <div class="con-shadow" aria-hidden="true"></div>
-      <div class="con-florals" aria-hidden="true"><img src="assets/img/line-florals.png" alt="" draggable="false"></div>
+      <div class="con-florals" aria-hidden="true"><img src="assets/img/line-florals.svg" alt="" draggable="false"></div>
 
       <div class="con-copy">
         <p class="ct-eyebrow" data-i18n="ct.eyebrow">Contact Us</p>
         <h2 class="ct-heading" data-i18n="ct.heading">Get in Touch</h2>
-        <div class="ct-divider" aria-hidden="true">
-          <svg class="or-ornament" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2c1.2 3.1 2.4 4.6 5 5.6-2.6 1-3.8 2.5-5 5.6-1.2-3.1-2.4-4.6-5-5.6 2.6-1 3.8-2.5 5-5.6Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <p class="ct-support" data-i18n="ct.support">Ready to find your perfect property? Our team is here to assist you with expert guidance and personalized service.</p>
+        <p class="ct-support" data-i18n="ct.support">Ready to find your perfect property? Our team is here to assist you with expert guidance and personalised service.</p>
       </div>
 
-      <div class="con-media">
-        <img src="assets/img/contact/office.jpg" alt="ANSH ASSOCIATES office interior" draggable="false">
-      </div>
+      <figure class="con-media">
+        <img src="assets/img/contact/office.jpg" width="1408" height="768" loading="lazy" decoding="async"
+             data-i18n-alt="ct.office.alt" alt="ANSH ASSOCIATES office interior" draggable="false">
+      </figure>
     </div>
 
-    <div="cin">
-      <div class="cin-info">
-        <article class="cin-block">
+    <div class="cin">
+      <div class="cin-wall">
+        <article class="cin-info" data-reveal>
           <span class="cin-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.6l2.5 5.1 5.6.8-4 3.9.9 5.6-5-2.6-5 2.6.9-5.6-4-3.9 5.6-.8L12 3.6Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 3.5h3.1l1.6 4-2 1.4a12.4 12.4 0 0 0 5.8 5.8l1.4-2 4 1.6v3.1a2 2 0 0 1-2.2 2A17.6 17.6 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
           </span>
           <div>
             <h3 class="cin-title" data-i18n="ct.phone.t">Call Us</h3>
-            <p class="cin-line" data-i18n="ct.phone.line">+91 98765 43210</p>
-            <p class="cin-note" data-i18n="ct.phone.note">Available Monday-Saturday, 9AM-7PM</p>
+            <p class="cin-line"><a class="cin-link" href="tel:+919876543210" data-i18n="ct.phone.line">+91 98765 43210</a></p>
+            <p class="cin-note" data-i18n="ct.phone.note">Available Monday–Saturday, 9AM–7PM</p>
           </div>
         </article>
 
-        <article class="cin-block">
+        <article class="cin-info" data-reveal style="--stagger:1">
           <span class="cin-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s6.5-5.6 6.5-10.5A6.5 6.5 0 0 0 5.5 10.5C5.5 15.4 12 21 12 21Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="12" cy="10.3" r="2.3" stroke="currentColor" stroke-width="1.3"/></svg>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s6.5-5.6 6.5-10.5A6.5 6.5 0 0 0 5.5 10.5C5.5 15.4 12 21 12 21Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="12" cy="10.3" r="2.3" stroke="currentColor" stroke-width="1.3"/></svg>
           </span>
           <div>
             <h3 class="cin-title" data-i18n="ct.location.t">Visit Us</h3>
@@ -423,9 +420,9 @@
           </div>
         </article>
 
-        <article class="cin-block">
+        <article class="cin-info" data-reveal style="--stagger:2">
           <span class="cin-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5.5" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="m3.8 6.6 8.2 6 8.2-6" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
           </span>
           <div>
             <h3 class="cin-title" data-i18n="ct.email.t">Email Us</h3>
@@ -434,9 +431,9 @@
           </div>
         </article>
 
-        <article class="cin-block">
+        <article class="cin-info" data-reveal style="--stagger:3">
           <span class="cin-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.2a8.8 8.8 0 0 0-7.5 13.4L3.3 21l4.5-1.2A8.8 8.8 0 1 0 12 3.2Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M9.3 8.6c.3.9.8 1.9 1.5 2.7.7.8 1.6 1.4 2.5 1.8.4-.4.7-.7 1-.8.4.2 1 .5 1.4.8-.1.6-.5 1-1 1.2-1.6.3-3.6-.9-5-2.4-1.3-1.5-2.1-3.3-1.8-4.6.2-.5.6-.8 1.1-.9.3.5.5 1 .3 1.2Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
           </span>
           <div>
             <h3 class="cin-title" data-i18n="ct.whatsapp.t">WhatsApp</h3>
@@ -445,42 +442,46 @@
           </div>
         </article>
 
-        <a class="ct-btn" id="ctDirections" href="#" target="_blank" rel="noopener">
+        <a class="ct-btn" id="ctDirections" href="https://www.google.com/maps/search/?api=1&amp;query=ANSH+ASSOCIATES+MG+Road+Bangalore" target="_blank" rel="noopener">
           <span data-i18n="ct.directions">Get Directions</span>
           <svg viewBox="0 0 26 12" fill="none" aria-hidden="true"><path d="M1 6h23m0 0-4.6-4.6M24 6l-4.6 4.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
 
-        <a class="ct-btn ci-wa" id="ctWaBtn" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <a class="ct-btn ci-wa" id="ctWaBtn" href="https://wa.me/919876543210" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.2a8.8 8.8 0 0 0-7.5 13.4L3.3 21l4.5-1.2A8.8 8.8 0 1 0 12 3.2Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
           <span data-i18n="ct.wa.btn">Chat on WhatsApp</span>
         </a>
 
-        <a class="ci-social" id="ctGoogle" href="#" target="_blank" rel="noopener">
+        <a class="ci-social" id="ctGoogle" href="https://www.google.com/maps/search/?api=1&amp;query=ANSH+ASSOCIATES+MG+Road+Bangalore" target="_blank" rel="noopener">
           <span class="ci-ig" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.6 21 12 12 20.4 3 12 12 3.6Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M7.8 12h8.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
           </span>
-          <span><span data-i18n="ct.google">Find Us on Google</span> · ANSH ASSOCIATES, Bangalore</span>
+          <span data-i18n="ct.google.line">Find Us on Google · ANSH ASSOCIATES, Bangalore</span>
         </a>
       </div>
 
       <div class="con-form">
         <h3 class="con-form-h" data-i18n="ct.inq.h">Property Inquiry</h3>
-        <form id="propertyInquiryForm">
+        <form id="propertyInquiryForm" novalidate>
           <div class="form-group">
             <label for="name" data-i18n="ct.inq.name">Full Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            <input type="text" id="name" name="name" autocomplete="name" required
+                   data-i18n-placeholder="ct.ph.name" placeholder="Enter your full name">
           </div>
           <div class="form-group">
             <label for="email" data-i18n="ct.inq.email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            <input type="email" id="email" name="email" autocomplete="email" required
+                   data-i18n-placeholder="ct.ph.email" placeholder="Enter your email address">
           </div>
           <div class="form-group">
             <label for="phone" data-i18n="ct.inq.phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" required
+                   data-i18n-placeholder="ct.ph.phone" placeholder="Enter your phone number">
           </div>
           <div class="form-group">
             <label for="propertyType" data-i18n="ct.inq.type">Property Type</label>
-            <select id="propertyType" name="propertyType" required>
+            <select id="propertyType" name="propertyType" required
+                    data-i18n-options="ct.opt" data-i18n-options-empty="selectType">
               <option value="">Select Property Type</option>
               <option value="residential">Residential</option>
               <option value="commercial">Commercial</option>
@@ -490,7 +491,8 @@
           </div>
           <div class="form-group">
             <label for="budget" data-i18n="ct.inq.budget">Budget Range</label>
-            <select id="budget" name="budget" required>
+            <select id="budget" name="budget" required
+                    data-i18n-options="ct.opt" data-i18n-options-empty="selectBudget">
               <option value="">Select Budget Range</option>
               <option value="under-50lac">Under ₹50 Lakhs</option>
               <option value="50lac-1cr">₹50 Lakhs - ₹1 Crore</option>
@@ -501,7 +503,8 @@
           </div>
           <div class="form-group">
             <label for="message" data-i18n="ct.inq.message">Message (Optional)</label>
-            <textarea id="message" name="message" rows="4" placeholder="Any specific requirements or questions..."></textarea>
+            <textarea id="message" name="message" rows="4"
+                      data-i18n-placeholder="ct.ph.message" placeholder="Any specific requirements or questions…"></textarea>
           </div>
           <button type="submit" class="ct-btn submit-btn" data-i18n="ct.inq.submit">Send Inquiry</button>
         </form>
@@ -509,31 +512,32 @@
 
       <aside class="con-quote">
         <blockquote>
-          <p data-i18n="ct.quote">"Your dream property is just a conversation away."</p>
+          <p data-i18n="ct.quote">“Your dream property is just a conversation away.”</p>
         </blockquote>
         <svg class="or-ornament" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M12 2c1.2 3.1 2.4 4.6 5 5.6-2.6 1-3.8 2.5-5 5.6-1.2-3.1-2.4-4.6-5-5.6 2.6-1 3.8-2.5 5-5.6Z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
         </svg>
         <div class="con-quote-media" aria-hidden="true">
-          <img src="assets/img/contact/happy-clients.jpg" alt="" draggable="false">
+          <img src="assets/img/contact/happy-clients.jpg" width="1408" height="768" loading="lazy" decoding="async" alt="" draggable="false">
         </div>
       </aside>
     </div>
 
     <div class="col">
       <div class="col-photo" aria-hidden="true">
-        <img src="assets/img/contact/building.jpg" alt="" draggable="false">
+        <img src="assets/img/contact/building.jpg" width="1408" height="768" loading="lazy" decoding="async" alt="" draggable="false">
       </div>
 
       <div class="col-center">
         <p class="ct-eyebrow" data-i18n="ct.loc.eyebrow">Our Location</p>
         <h3 class="col-city" data-i18n="ct.loc.city">Bangalore</h3>
-        <p class="col-line" data-i18n="ct.loc.line">Premium real estate services in India's Silicon Valley.</p>
+        <p class="col-line" data-i18n="ct.loc.line">Premium real estate services in India’s Silicon Valley.</p>
       </div>
 
       <div class="col-map">
-        <img class="col-map-img" src="assets/img/contact/map.jpg" alt="Stylised map of our location" draggable="false">
-        <a class="col-open" id="ctOpenMaps" href="#" target="_blank" rel="noopener">
+        <img class="col-map-img" src="assets/img/contact/map.svg" width="800" height="520" loading="lazy"
+             data-i18n-alt="ct.map.alt" alt="Stylised map of our MG Road location" draggable="false">
+        <a class="col-open" id="ctOpenMaps" href="https://www.google.com/maps/search/?api=1&amp;query=ANSH+ASSOCIATES+MG+Road+Bangalore" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 4 4 6v14l5-2 6 2 5-2V4l-5 2-6-2Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M9 4v14M15 6v14" stroke="currentColor" stroke-width="1.2"/></svg>
           <span data-i18n="ct.map.open">Open in Maps</span>
           <svg viewBox="0 0 26 12" fill="none" aria-hidden="true"><path d="M1 6h23m0 0-4.6-4.6M24 6l-4.6 4.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -542,26 +546,26 @@
     </div>
   </section>
 
-  <!-- ═══ SILK TRANSITION (WebGL) - Optional for real estate ═══ -->
-  <!-- Commented out as it may not be suitable for real estate -->
-  <!-- <canvas id="fabric" aria-hidden="true"></canvas> -->
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    <img class="site-footer-mark" src="assets/img/logo.svg" alt="" width="200" height="200" aria-hidden="true">
+    <p class="site-footer-copy">© <span id="footerYear">2026</span> ANSH ASSOCIATES · <span data-i18n="footer.rights">All rights reserved.</span></p>
+  </footer>
 
-  <!-- ═══ INTRO ANIMATION - Simplified for real estate ═══ -->
+  </main>
+
+  <!-- ═══ INTRO ═══ -->
   <div id="intro" aria-hidden="true">
     <div class="intro-vignette"></div>
-
     <div id="logo-intro">
-      <img id="logo" src="assets/img/logo.svg" alt="ANSH ASSOCIATES Logo" draggable="false">
+      <img id="logo" src="assets/img/logo.svg" alt="" width="200" height="200" draggable="false">
     </div>
   </div>
 
-  <!-- ═══ THE LOGO — one element from first frame to header ═══ -->
-  <img id="logo-header" src="assets/img/logo.svg" alt="ANSH ASSOCIATES — Real Estate Firm" draggable="false">
-
-  <!-- Vendor scripts -->
+  <!-- Vendor scripts (classic UMD bundles — consumed from window by the modules) -->
   <script src="js/vendor/gsap.min.js"></script>
   <script src="js/vendor/ScrollTrigger.min.js"></script>
-  <script src="js/vendor/lenis.min.js"></script>
   <script type="module" src="js/main.js"></script>
+  <script>document.getElementById('footerYear').textContent = new Date().getFullYear();</script>
 </body>
 </html>

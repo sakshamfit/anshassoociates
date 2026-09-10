@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" fill="none" aria-hidden="true">
+  <defs>
+    <g id="bl-flower">
+      <g stroke="#8B0000" fill="none" stroke-width="1.1" stroke-linejoin="round">
+        <path d="M0-16C4.5-12 6.5-7 6.5-2.5 6.5 2 3.5 5.5 0 5.5S-6.5 2-6.5-2.5C-6.5-7-4.5-12 0-16Z"/>
+        <path d="M0-16C4.5-12 6.5-7 6.5-2.5 6.5 2 3.5 5.5 0 5.5S-6.5 2-6.5-2.5C-6.5-7-4.5-12 0-16Z" transform="rotate(72)"/>
+        <path d="M0-16C4.5-12 6.5-7 6.5-2.5 6.5 2 3.5 5.5 0 5.5S-6.5 2-6.5-2.5C-6.5-7-4.5-12 0-16Z" transform="rotate(144)"/>
+        <path d="M0-16C4.5-12 6.5-7 6.5-2.5 6.5 2 3.5 5.5 0 5.5S-6.5 2-6.5-2.5C-6.5-7-4.5-12 0-16Z" transform="rotate(216)"/>
+        <path d="M0-16C4.5-12 6.5-7 6.5-2.5 6.5 2 3.5 5.5 0 5.5S-6.5 2-6.5-2.5C-6.5-7-4.5-12 0-16Z" transform="rotate(288)"/>
+      </g>
+      <circle r="3.4" fill="#CD5C5C" opacity="0.75"/>
+    </g>
+  </defs>
+
+  <g stroke="#8B0000" stroke-linecap="round" fill="none">
+    <path d="M180 348c-14-58-6-118 22-176 14-28 34-52 60-70" stroke-width="1.4" opacity="0.4"/>
+    <path d="M180 348c-24-48-56-88-96-118" stroke-width="1.1" opacity="0.3"/>
+    <path d="M152 258c22-16 40-38 52-64" stroke-width="0.9" opacity="0.28"/>
+  </g>
+
+  <use href="#bl-flower" transform="translate(268 96) scale(1.35)"/>
+  <use href="#bl-flower" transform="translate(232 132) scale(0.95)"/>
+  <use href="#bl-flower" transform="translate(292 148) scale(0.7)"/>
+  <use href="#bl-flower" transform="translate(204 178) scale(1.05)"/>
+  <use href="#bl-flower" transform="translate(120 214) scale(1.2)"/>
+  <use href="#bl-flower" transform="translate(84 246) scale(0.75)"/>
+  <use href="#bl-flower" transform="translate(152 246) scale(0.6)"/>
+  <use href="#bl-flower" transform="translate(62 178) scale(0.55)"/>
+</svg>

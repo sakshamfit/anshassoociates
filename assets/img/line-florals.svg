@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" fill="none" aria-hidden="true">
+  <defs>
+    <path id="lf-leaf" d="M0 0C7.5-9.5 21-11.5 30-6c-1.5 10-11 17.5-21.5 17C4 10.5 1 5.5 0 0Z"/>
+    <path id="lf-bud" d="M0-7.5C4.5-4.5 6.5-1 6.5 2.5 6.5 6 3.5 8.5 0 8.5S-6.5 6-6.5 2.5C-6.5-1-4.5-4.5 0-7.5Z"/>
+  </defs>
+
+  <g stroke="#8B0000" stroke-linecap="round" stroke-linejoin="round">
+    <!-- primary stem -->
+    <path d="M28 400C74 336 96 258 112 186c12-56 40-100 90-134" stroke-width="2.1" opacity="0.7"/>
+    <!-- secondary stem -->
+    <path d="M58 404c72-34 134-84 182-150 32-44 66-80 118-102" stroke-width="1.4" opacity="0.45"/>
+    <!-- tertiary tendril -->
+    <path d="M96 300c30-14 52-38 66-70M164 168c26 6 48-2 66-22" stroke-width="1.1" opacity="0.4"/>
+
+    <!-- leaves along primary stem -->
+    <g opacity="0.62" fill="none" stroke-width="1.3">
+      <use href="#lf-leaf" transform="translate(66 336) rotate(-52) scale(1.15)"/>
+      <use href="#lf-leaf" transform="translate(84 292) rotate(-24) scale(1)"/>
+      <use href="#lf-leaf" transform="translate(98 244) rotate(-66) scale(1.1)"/>
+      <use href="#lf-leaf" transform="translate(112 196) rotate(-30) scale(0.95)"/>
+      <use href="#lf-leaf" transform="translate(128 148) rotate(-70) scale(1)"/>
+      <use href="#lf-leaf" transform="translate(150 106) rotate(-38) scale(0.85)"/>
+      <use href="#lf-leaf" transform="translate(178 74) rotate(-62) scale(0.9)"/>
+    </g>
+
+    <!-- leaves along secondary stem -->
+    <g opacity="0.4" fill="none" stroke-width="1.1">
+      <use href="#lf-leaf" transform="translate(150 344) rotate(-40) scale(0.9)"/>
+      <use href="#lf-leaf" transform="translate(208 300) rotate(-28) scale(0.8)"/>
+      <use href="#lf-leaf" transform="translate(262 246) rotate(-52) scale(0.85)"/>
+      <use href="#lf-leaf" transform="translate(312 196) rotate(-34) scale(0.75)"/>
+      <use href="#lf-leaf" transform="translate(352 164) rotate(-46) scale(0.7)"/>
+    </g>
+
+    <!-- blossom clusters -->
+    <g fill="none" stroke-width="1.2" opacity="0.75">
+      <use href="#lf-bud" transform="translate(204 50)"/>
+      <use href="#lf-bud" transform="translate(224 62) scale(0.7)"/>
+      <use href="#lf-bud" transform="translate(362 150) scale(0.8)"/>
+      <use href="#lf-bud" transform="translate(378 164) scale(0.55)"/>
+      <use href="#lf-bud" transform="translate(168 92) scale(0.5)"/>
+    </g>
+
+    <!-- hairline flourish -->
+    <path d="M24 372c46-6 84-30 108-70" stroke-width="0.8" opacity="0.28"/>
+  </g>
+</svg>

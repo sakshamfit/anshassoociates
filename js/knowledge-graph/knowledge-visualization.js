@@ -1,5 +1,23 @@
 // ANSH ASSOCIATES - Knowledge Graph Visualization
 // Three.js-based knowledge graph showing connections between real estate concepts
+//
+// ── STATUS: OPTIONAL, NOT LOADED ──────────────────────────────────────
+// This module is intentionally not imported by js/main.js. As committed
+// it could not run, and importing it took the whole site down with it:
+//
+//   * It imports the bare specifiers 'three' and
+//     'three/examples/jsm/controls/OrbitControls.js'. There is no build
+//     step, no node_modules and no <script type="importmap"> in
+//     index.html, so the browser cannot resolve them. Because js/main.js
+//     imported this file statically, that single unresolvable specifier
+//     prevented main.js from evaluating at all.
+//   * index.html contains no #knowledge-graph container, so
+//     initKnowledgeGraph() returns on its first line regardless.
+//
+// To enable it: add three.js via an import map, add a
+// <div id="knowledge-graph"> to the page, and re-add the import to
+// js/main.js behind a dynamic import() so a failure here can never
+// block the rest of the page again.
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
