@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="ANSH ASSOCIATES">
+  <title>ANSH ASSOCIATES</title>
+
+  <!-- ── Emblem: nested lozenge with an "A" monogram ── -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M100 24 136 62 100 100 64 62Z" stroke="#8B0000" stroke-width="2.2"/>
+    <path d="M100 33.5 127 62 100 90.5 73 62Z" stroke="#CD5C5C" stroke-width="1" opacity="0.85"/>
+    <path d="M100 45 88 79M100 45 112 79M92.6 68.5h14.8" stroke="#2C1810" stroke-width="3.2"/>
+    <circle cx="100" cy="62" r="1.9" fill="#8B0000" stroke="none"/>
+  </g>
+
+  <!-- ── Wordmark ── -->
+  <text x="101" y="140" text-anchor="middle"
+        font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif"
+        font-size="40" font-weight="600" letter-spacing="5.5" fill="#2C1810">ANSH</text>
+
+  <path d="M52 152h96" stroke="#8B0000" stroke-width="0.9" opacity="0.55"/>
+  <circle cx="100" cy="152" r="2.1" fill="#8B0000" opacity="0.75"/>
+
+  <text x="101" y="171" text-anchor="middle"
+        font-family="'Jost', 'Helvetica Neue', Arial, sans-serif"
+        font-size="12" font-weight="400" letter-spacing="4.6" fill="#8B0000">ASSOCIATES</text>
+</svg>

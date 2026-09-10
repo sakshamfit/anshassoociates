@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" fill="none" aria-hidden="true">
+  <defs>
+    <path id="gl-leaf" d="M0 0C6-11 19-16 30-14c1 11-6 21-16 24C6 12 1 6.5 0 0Z"/>
+  </defs>
+
+  <g stroke="#B08D3F" stroke-linecap="round" fill="none">
+    <path d="M12 344C58 288 92 224 116 156c14-40 34-74 62-100" stroke-width="1.6" opacity="0.5"/>
+    <path d="M44 350c62-30 116-78 156-140" stroke-width="1.1" opacity="0.34"/>
+  </g>
+
+  <g stroke="#B08D3F" stroke-width="1.2" fill="none" opacity="0.55">
+    <use href="#gl-leaf" transform="translate(44 300) rotate(-56) scale(1.2)"/>
+    <use href="#gl-leaf" transform="translate(62 258) rotate(-20) scale(1.05)"/>
+    <use href="#gl-leaf" transform="translate(80 214) rotate(-64) scale(1.1)"/>
+    <use href="#gl-leaf" transform="translate(98 168) rotate(-26) scale(0.95)"/>
+    <use href="#gl-leaf" transform="translate(118 124) rotate(-62) scale(1)"/>
+    <use href="#gl-leaf" transform="translate(142 86) rotate(-34) scale(0.85)"/>
+    <use href="#gl-leaf" transform="translate(166 60) rotate(-58) scale(0.8)"/>
+  </g>
+
+  <g stroke="#C9A227" stroke-width="1" fill="none" opacity="0.38">
+    <use href="#gl-leaf" transform="translate(124 300) rotate(-44) scale(0.9)"/>
+    <use href="#gl-leaf" transform="translate(166 254) rotate(-24) scale(0.8)"/>
+    <use href="#gl-leaf" transform="translate(204 204) rotate(-50) scale(0.85)"/>
+    <use href="#gl-leaf" transform="translate(240 162) rotate(-30) scale(0.7)"/>
+  </g>
+
+  <g fill="#C9A227" opacity="0.4">
+    <circle cx="182" cy="52" r="2.2"/>
+    <circle cx="196" cy="70" r="1.5"/>
+    <circle cx="256" cy="152" r="1.8"/>
+  </g>
+</svg>

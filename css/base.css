@@ -714,7 +714,10 @@ a.icon-btn { display: inline-block; text-decoration: none; }
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-@property-card:hover,
+/* These two rules previously began with a stray `@property-card:hover,`
+   selector. An unknown at-rule makes the CSS parser skip ahead to the
+   end of the following block, so both rule bodies were being discarded
+   entirely rather than applied. */
 .property-card:hover,
 .collection-card:hover,
 .feature-card:hover {
@@ -722,7 +725,6 @@ a.icon-btn { display: inline-block; text-decoration: none; }
     box-shadow: var(--shadow-lg);
 }
 
-@property-card:active,
 .property-card:active,
 .collection-card:active,
 .feature-card:active {

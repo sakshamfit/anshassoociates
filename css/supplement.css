@@ -1,0 +1,641 @@
+/* ══════════════════════════════════════════════════════════════
+   ANSH ASSOCIATES — Supplement
+   Loaded LAST, after every other stylesheet.
+
+   This file exists because the markup and the stylesheets had
+   drifted apart. Three concrete classes of defect are repaired
+   here, each of which would otherwise be visible:
+
+   1. NEVER SHOWN — `#hero` is declared `opacity:0; visibility:hidden`
+      in hero.css and no rule in the repo ever reversed it. `#intro`
+      is a fixed, opaque, z-index:999 panel that nothing ever hid.
+      Together they guaranteed a blank cream screen.
+
+   2. UNSTYLED MARKUP — 50+ class names were used in index.html with
+      no matching rule anywhere: `.prop-florals`, `.serv-blossoms`,
+      `.about-media`, `.cin-link`, `.ci-social`, `.col-photo`, …
+      Because several of these wrap absolutely-positioned ornaments
+      (`<img>` tags), they rendered as full-size images inline in the
+      document flow.
+
+   3. NAMING DRIFT — the About and Testimonials CSS targets
+      `.about-*` / `.test-*` while the markup used `.abt-*` / `.tst-*`,
+      and the contact CSS styles `.cin-info` as a *card* while the
+      markup used it as the *container*. The markup has been aligned
+      to the CSS; the genuinely absent pieces are defined below.
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+    /* Referenced by #logoSlot in base.css but never defined, which made
+       its calc()-based width/height resolve to nothing. */
+    --logo-land-d: clamp(62px, 7.4vw, 92px);
+    --shell-max: 1320px;
+    --shell-pad: clamp(20px, 5vw, 72px);
+}
+
+/* ── 1. The page must actually appear ──────────────────────────── */
+
+/* The hero is revealed by removing the blanket hide. The opaque intro
+   panel sits above it at z-index 999, so this still reads as a reveal
+   rather than a flash — and it no longer depends on a class that
+   nothing ever added. */
+#hero {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease;
+}
+
+/* The intro overlay now leaves. `.intro-done` is added by main.js, and
+   js/main.js also removes the node on a failsafe timer. */
+#intro {
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0.9s;
+}
+
+.intro-done #intro {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* intro.css waits for `.intro-finished` to show the logo; main.js adds
+   `.is-shown` directly to the image so the timing is explicit. */
+#logo-intro img.is-shown {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ── Header logo ───────────────────────────────────────────────── */
+
+/* #logo-header had no rule at all, so it rendered as a full-width
+   image dropped into the page flow beneath the footer. */
+#logoSlot {
+    display: block;
+    pointer-events: auto;
+}
+
+#logo-header {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* ── Page shell: every section shipped with `padding: X 0`, i.e. no
+      horizontal padding at all, so cards sat flush to the viewport ── */
+#properties,
+#services,
+#about,
+#testimonials,
+#contact {
+    padding-left: var(--shell-pad);
+    padding-right: var(--shell-pad);
+    padding-top: clamp(64px, 9vh, 120px);
+    padding-bottom: clamp(64px, 9vh, 120px);
+}
+
+#properties > *,
+#services > *,
+#about > *,
+#testimonials > *,
+#contact > * {
+    max-width: var(--shell-max);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Absolutely-positioned ornaments must stay pinned to the section,
+   not to the constrained content box. */
+.prop-shadow, .prop-corner, .prop-corner-tr, .prop-florals,
+.serv-blossoms, .serv-leaves,
+.about-shadow, .about-florals,
+.test-shadow, .test-florals,
+.con-shadow, .con-florals {
+    max-width: none;
+    margin: 0;
+}
+
+.prop-grid,
+.serv-wall,
+.test-media,
+.about-content,
+.cin,
+.col,
+.con {
+    width: 100%;
+}
+
+.prop-grid,
+.serv-wall,
+.about-content,
+.test-media,
+.cin,
+.col {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/* ── 2. Decorative wrappers that had no rules ──────────────────── */
+
+.prop-florals,
+.about-florals,
+.test-florals,
+.con-florals {
+    position: absolute;
+    width: clamp(180px, 24vw, 340px);
+    pointer-events: none;
+    opacity: 0.32;
+    z-index: 0;
+}
+
+.prop-florals   { top: 3%;  right: -2%; transform: rotate(8deg); }
+.about-florals  { bottom: 2%; left: -3%; transform: scaleX(-1) rotate(-6deg); }
+.test-florals   { top: 4%;  left: -3%; transform: rotate(-10deg); }
+.con-florals    { bottom: 1%; right: -2%; transform: rotate(6deg); }
+
+.prop-florals img,
+.about-florals img,
+.test-florals img,
+.con-florals img,
+.serv-blossoms img,
+.serv-leaves img {
+    width: 100%;
+    height: auto;
+    display: block;
+    will-change: transform;
+}
+
+.serv-blossoms,
+.serv-leaves {
+    position: absolute;
+    width: clamp(160px, 20vw, 300px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.serv-blossoms { top: 6%; right: 1%; opacity: 0.3; }
+.serv-leaves   { bottom: 4%; left: 0%; opacity: 0.36; }
+
+.prop-shadow,
+.about-shadow,
+.test-shadow,
+.con-shadow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(60% 45% at 15% 0%, rgba(139, 0, 0, 0.05), transparent 70%),
+        radial-gradient(50% 40% at 90% 100%, rgba(44, 24, 16, 0.05), transparent 70%);
+}
+
+.prop-corner,
+.prop-corner-tr {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    border: 1px solid var(--primary-deep);
+    opacity: 0.22;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.prop-corner    { left: clamp(10px, 2vw, 34px); bottom: clamp(10px, 2vw, 34px); border-top: 0; border-right: 0; }
+.prop-corner-tr { right: clamp(10px, 2vw, 34px); top: clamp(10px, 2vw, 34px); border-bottom: 0; border-left: 0; }
+
+/* Keep ornamentation out of the interaction path. */
+#properties, #services, #about, #testimonials, #contact { z-index: 0; }
+.prop-intro, .prop-grid, .prop-nav, .prop-statement, .prop-ethos,
+.serv-head, .serv-wall, .serv-foot, .serv-side,
+.about-head, .about-media, .about-content, .about-foot, .about-side,
+.test-head, .test-media, .test-foot, .test-side,
+.con, .cin, .col {
+    position: relative;
+    z-index: 1;
+}
+
+.prop-intro {
+    text-align: center;
+    max-width: 640px;
+}
+
+.prop-empty {
+    text-align: center;
+    font-family: var(--font-sans);
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--text-dark);
+    opacity: 0.6;
+    padding: var(--spacing-xl) 0;
+}
+
+.prop-count span:last-child {
+    text-transform: uppercase;
+    font-family: var(--font-sans);
+    font-size: 0.62em;
+    letter-spacing: 0.34em;
+    opacity: 0.65;
+}
+
+.serv-ornament {
+    width: 26px;
+    height: 26px;
+    margin: 0 auto var(--spacing-md);
+    display: block;
+    color: var(--primary-deep);
+    opacity: 0.8;
+}
+
+.serv-foot {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+}
+
+.serv-foot p {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(13px, 2vh, 18px);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    opacity: 0.7;
+}
+
+/* ── About: pieces the markup needed but about.css lacked ──────── */
+
+.about-media {
+    max-width: 900px;
+    margin: 0 auto var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.about-media img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-media:hover img { transform: scale(1.035); }
+
+.about-note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(13px, 2vh, 17px);
+    letter-spacing: 0.1em;
+    color: var(--primary-deep);
+    opacity: 0.85;
+    margin-top: var(--spacing-sm);
+}
+
+/* ── Contact: structural repair ────────────────────────────────── */
+
+/* The markup used `.cin-info` for the container and `.cin-block` for
+   the cards, but contact.css styles `.cin-info` as the card. The
+   container is now `.cin-wall`. */
+.cin-wall {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: var(--spacing-md);
+    align-content: start;
+}
+
+.con {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(24px, 4vw, 56px);
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.con-media img {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.con-media,
+.col-photo,
+.con-quote-media {
+    margin: 0;
+}
+
+.col-photo img {
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    object-fit: cover;
+}
+
+.col-photo,
+.col-map {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.col-map-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.col-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.cin-link {
+    color: inherit;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.cin-link:hover,
+.cin-link:focus-visible {
+    border-bottom-color: currentColor;
+    opacity: 1;
+}
+
+.ci-wa,
+.ci-social {
+    grid-column: 1 / -1;
+}
+
+.ci-social {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--text-cream);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(12px, 1.9vh, 16px);
+    letter-spacing: 0.16em;
+    color: var(--text-dark);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.ci-social:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    opacity: 1;
+}
+
+.ci-ig {
+    flex: 0 0 auto;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--primary-deep);
+    color: var(--text-cream);
+}
+
+.ci-ig svg { width: 17px; height: 17px; }
+
+/* ── 3. New components ─────────────────────────────────────────── */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Search panel */
+.site-search {
+    position: fixed;
+    top: 14vh;
+    left: 0;
+    right: 0;
+    z-index: 14;
+    padding: 0 var(--shell-pad);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0.35s;
+    pointer-events: none;
+}
+
+.site-search.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: auto;
+}
+
+.site-search-inner {
+    max-width: 620px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: 14px 20px;
+    background: var(--text-cream);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-lg);
+    color: var(--primary-deep);
+}
+
+.site-search-inner svg { width: 19px; height: 19px; flex: 0 0 auto; }
+
+.site-search-inner input {
+    flex: 1 1 auto;
+    border: 0;
+    outline: none;
+    background: none;
+    font-family: var(--font-sans);
+    font-size: clamp(14px, 2.1vh, 17px);
+    letter-spacing: 0.08em;
+    color: var(--text-dark);
+}
+
+.site-search-inner input::placeholder { color: var(--text-dark); opacity: 0.42; }
+
+/* Wishlist heart on each property card */
+.prop-save {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--text-cream);
+    background: rgba(44, 24, 16, 0.42);
+    backdrop-filter: blur(6px);
+    transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.prop-save svg { width: 19px; height: 19px; }
+.prop-save:hover { transform: scale(1.1); background: rgba(44, 24, 16, 0.62); }
+
+.prop-save.is-saved {
+    background: var(--primary-deep);
+    color: var(--text-cream);
+}
+
+.prop-save.is-saved svg path { fill: currentColor; }
+
+.cart-count.is-populated { background: var(--primary-deep); }
+
+/* Toast — replaces the previous blocking alert() on form submit */
+#toast {
+    position: fixed;
+    left: 50%;
+    bottom: clamp(20px, 5vh, 48px);
+    z-index: 200;
+    max-width: min(92vw, 520px);
+    padding: 15px 24px;
+    border-radius: var(--radius-pill);
+    background: var(--text-dark);
+    color: var(--text-cream);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(13px, 2vh, 16px);
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    text-align: center;
+    box-shadow: var(--shadow-xl);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 14px);
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0.35s;
+}
+
+#toast.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Footer */
+.site-footer {
+    padding: clamp(40px, 7vh, 80px) var(--shell-pad);
+    text-align: center;
+    background: linear-gradient(180deg, var(--background-light) 0%, var(--background-dark) 100%);
+    border-top: 1px solid var(--border-color);
+}
+
+.site-footer-mark {
+    width: clamp(78px, 9vw, 108px);
+    height: auto;
+    margin: 0 auto var(--spacing-md);
+    opacity: 0.9;
+}
+
+.site-footer-copy {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(11px, 1.8vh, 14px);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    opacity: 0.62;
+}
+
+/* ── Corrections to existing rules ─────────────────────────────── */
+
+/* properties.css sets `fill` on the location pin path, which flattens
+   the stroked glyph into a solid blob. It is a stroked icon. */
+.property-location svg path {
+    fill: none;
+    stroke: var(--primary-deep);
+    stroke-width: 1.4;
+}
+
+/* The three original stylesheets each shipped the same block of
+   `[data-reveal]:nth-child(n)` delays, which keyed the stagger to DOM
+   position rather than intent — the 6th card in any list waited a
+   full second. Driven by an explicit --stagger instead. */
+[data-reveal]:nth-child(n) {
+    transition-delay: calc(var(--stagger, 0) * 0.09s);
+}
+
+/* Focus visibility, which the original sheets never defined. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--primary-deep);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+.scroll-arrow {
+    transform-origin: center;
+    animation: ansh-scroll-nudge 2.1s ease-in-out infinite;
+}
+
+@keyframes ansh-scroll-nudge {
+    0%, 100% { transform: translateY(-2px); opacity: 0.55; }
+    50%      { transform: translateY(3px);  opacity: 1; }
+}
+
+/* Hindi sets its own typeface — the switch was cosmetic before. */
+html[lang="hi"] body,
+html[lang="hi"] .nav-link,
+html[lang="hi"] .mm-link,
+html[lang="hi"] .about-text,
+html[lang="hi"] .serv-text,
+html[lang="hi"] .test-text,
+html[lang="hi"] .property-description,
+html[lang="hi"] .cin-line,
+html[lang="hi"] .cin-note,
+html[lang="hi"] .about-support,
+html[lang="hi"] .test-support,
+html[lang="hi"] .serv-support,
+html[lang="hi"] .prop-sub,
+html[lang="hi"] .ct-support {
+    font-family: var(--font-hindi);
+    letter-spacing: 0.01em;
+    line-height: 1.85;
+}
+
+@media (max-width: 900px) {
+    .con { grid-template-columns: minmax(0, 1fr); }
+    .site-search { top: 12vh; }
+    .prop-florals, .serv-blossoms, .serv-leaves { display: none; }
+    .about-florals, .test-florals, .con-florals { opacity: 0.18; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+
+    [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

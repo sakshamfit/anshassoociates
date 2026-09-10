@@ -1,0 +1,170 @@
+/* ══════════════════════════════════════════════════════════════
+   ANSH ASSOCIATES — Leadership / Founders' Vision
+   Shell styles for the #leadership chapter that hosts the React
+   <CircularTestimonials /> island. The component's own internal
+   styles live in src/components/ui/circular-testimonials.css.
+   ══════════════════════════════════════════════════════════════ */
+
+#leadership {
+    position: relative;
+    background-color: var(--background-dark);
+    overflow: hidden;
+    padding-top: clamp(64px, 9vh, 120px);
+    padding-bottom: clamp(64px, 9vh, 120px);
+    padding-left: var(--shell-pad);
+    padding-right: var(--shell-pad);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+#leadership > * {
+    max-width: var(--shell-max);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* The React island should sit on top of the ornaments. */
+#leadershipWall {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.lead-shadow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(55% 42% at 12% 0%, rgba(139, 0, 0, 0.06), transparent 70%),
+        radial-gradient(48% 40% at 92% 100%, rgba(44, 24, 16, 0.06), transparent 70%);
+}
+
+.lead-florals {
+    position: absolute;
+    width: clamp(180px, 24vw, 340px);
+    pointer-events: none;
+    opacity: 0.3;
+    z-index: 0;
+    top: 4%;
+    right: -2%;
+}
+
+.lead-florals img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.lead-head {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.lead-eyebrow {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(12px, 1.9vh, 18px);
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--primary-deep);
+    opacity: 0.9;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.lead-heading {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(24px, 4vh, 36px);
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    line-height: 1.2;
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--spacing-md);
+}
+
+.lead-heading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-deep);
+}
+
+.lead-support {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.3em;
+    line-height: 1.6;
+    color: var(--text-dark);
+    opacity: 0.8;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.lead-side {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(10px, 1.56vh, 15px);
+    letter-spacing: 0.32em;
+    line-height: 1.62;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    opacity: 0.95;
+    display: block;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.lead-foot {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+}
+
+.lead-foot svg {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto var(--spacing-sm);
+    display: block;
+}
+
+.lead-foot svg path {
+    stroke: var(--primary-deep);
+    fill: none;
+    stroke-width: 1.1;
+}
+
+.lead-foot p {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.34em;
+    line-height: 1.6;
+    color: var(--text-dark);
+    opacity: 0.8;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* Hindi typeface parity for the shell copy. */
+html[lang="hi"] .lead-support,
+html[lang="hi"] .lead-side,
+html[lang="hi"] .lead-foot p {
+    font-family: var(--font-hindi);
+    letter-spacing: 0.01em;
+    line-height: 1.85;
+}
+
+@media (max-width: 900px) {
+    .lead-florals { display: none; }
+}
