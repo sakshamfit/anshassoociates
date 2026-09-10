@@ -73,3 +73,29 @@ repaired every one of these; each is asserted by `scripts/verify.mjs` and
 - Open Graph + JSON-LD `RealEstateAgent` structured data.
 - All 15 missing images (9 photographic, 6 vector: logo, florals, blossoms, leaves, map).
 - `package.json` so `npm start` / `npm test` work.
+
+## Founders & Leadership carousel (React island)
+
+A "Founders & Leadership — their vision" chapter (`#leadership`) was added between
+About and Testimonials using the supplied `circular-testimonials` React component.
+
+This repo is a **build-free vanilla site**, not a shadcn/Next app, and there is no
+Tailwind. Per the integration brief's fallback for that case:
+
+- **Components path** — the component lives at the shadcn default
+  `src/components/ui/circular-testimonials.tsx`. That folder is the convention the
+  shadcn CLI uses, so creating it explicitly keeps the component drop-in portable.
+- **TypeScript** — adopted for the island (`tsconfig.json`, `npm run typecheck`).
+- **Tailwind / shadcn CLI** — not installed: the component ships its own scoped CSS
+  and the rest of the site is hand-written CSS, so a utility framework would add a
+  build pipeline for no benefit. If you later scaffold a full Next app, run
+  `npx shadcn@latest init` there and copy the component in unchanged.
+- **Adaptations** (only what a non-Next host requires): the `<style jsx>` block moved
+  to `circular-testimonials.css`; `NodeJS.Timeout` → portable timer type; an optional
+  `keyboard` prop gates the global arrow-key handler to when the section is on screen.
+- **Build** — `npm run build` bundles `src/leadership.tsx` (React + framer-motion +
+  react-icons) with esbuild into `js/vendor/leadership.bundle.js`, which index.html
+  loads. Content and English/हिन्दी copy come from `js/data.js` + `js/i18n.js`, so the
+  site-wide language switch re-renders the island.
+
+Run `npm test` to check wiring, assets, i18n, and that the bundle evaluates.

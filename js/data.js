@@ -102,5 +102,15 @@ export const TESTIMONIALS = [
   }
 ];
 
+// The leadership carousel is a React island (src/leadership.tsx) that
+// renders these people through <CircularTestimonials />. Copy is keyed
+// into js/i18n.js so the English/हिन्दी switch covers it too.
+export const LEADERSHIP = [
+  { key: 'lead.1', image: 'assets/img/leadership/founder.jpg' },
+  { key: 'lead.2', image: 'assets/img/leadership/managing-director.jpg' },
+  { key: 'lead.3', image: 'assets/img/leadership/head-investments.jpg' },
+  { key: 'lead.4', image: 'assets/img/leadership/client-relations.jpg' }
+];
+
 export const PROPERTY_TYPES = ['residential', 'commercial', 'land', 'investment'];
 export const BUDGETS = ['under-50lac', '50lac-1cr', '1cr-2cr', '2cr-5cr', 'above-5cr'];

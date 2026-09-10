@@ -252,3 +252,5 @@ if (hiBtn) {
 console.log(`\n\x1b[1m${checks - failures}/${checks} checks passed\x1b[0m`);
 if (failures) { console.log(`\x1b[31m${failures} FAILING\x1b[0m`); process.exit(1); }
 console.log('\x1b[32mBoot smoke test passed.\x1b[0m');
+// Pending intro timers would otherwise hold the event loop open.
+process.exit(0);

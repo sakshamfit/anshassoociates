@@ -1,13 +1,27 @@
 {
   "name": "ansh-associates",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
-  "description": "ANSH ASSOCIATES — premium real estate landing page. Static site, no build step.",
+  "description": "ANSH ASSOCIATES — premium real estate landing page. Static vanilla site with a single bundled React island for the leadership carousel.",
   "type": "module",
   "scripts": {
     "start": "node scripts/serve.mjs",
     "dev": "node scripts/serve.mjs",
-    "test": "node scripts/verify.mjs && node scripts/smoke-boot.mjs"
+    "build": "esbuild src/leadership.tsx --bundle --outfile=js/vendor/leadership.bundle.js --format=iife --jsx=automatic --alias:@=./src --define:process.env.NODE_ENV=\\\"production\\\" --minify --target=es2020 --log-level=warning",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run typecheck && node scripts/verify.mjs && node scripts/smoke-boot.mjs"
+  },
+  "dependencies": {
+    "framer-motion": "^13.2.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-icons": "^5.7.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.6.0"
   },
   "engines": {
     "node": ">=18"

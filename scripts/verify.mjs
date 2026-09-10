@@ -34,7 +34,7 @@ const jsFiles = fs.readdirSync(path.join(ROOT, 'js'), { withFileTypes: true });
 // ── 1. Referenced assets exist ───────────────────────────────────
 head('1. Asset references');
 const assetRefs = new Set();
-for (const m of html.matchAll(/(?:src|href)="((?:assets|css|js)\/[^"]+)"/g)) assetRefs.add(m[1]);
+for (const m of html.matchAll(/(?:src|href)="((?:assets|css|js|src)\/[^"]+)"/g)) assetRefs.add(m[1]);
 // Assets named from the data module (property images) as well.
 const dataSrc = fs.readFileSync(path.join(ROOT, 'js/data.js'), 'utf8');
 for (const m of dataSrc.matchAll(/image:\s*'([^']+)'/g)) assetRefs.add(m[1]);
@@ -171,6 +171,55 @@ for (const lang of Object.keys(DICTIONARIES)) {
   }
 }
 
+// ── 4b. React leadership island wiring ───────────────────────────
+head('4b. React leadership island');
+fs.existsSync(path.join(ROOT, 'src/components/ui/circular-testimonials.tsx'))
+  ? ok('components/ui/circular-testimonials.tsx exists (shadcn default path)')
+  : bad('components/ui/circular-testimonials.tsx missing');
+fs.existsSync(path.join(ROOT, 'src/components/ui/circular-testimonials.css'))
+  ? ok('component stylesheet extracted from <style jsx> exists')
+  : bad('component stylesheet missing');
+fs.existsSync(path.join(ROOT, 'js/vendor/leadership.bundle.js'))
+  ? ok('leadership.bundle.js is built')
+  : bad('leadership.bundle.js missing — run `npm run build`');
+html.includes('id="leadershipWall"') ? ok('#leadershipWall mount point present') : bad('#leadershipWall missing');
+html.includes('js/vendor/leadership.bundle.js') ? ok('page loads the leadership bundle') : bad('page does not load the leadership bundle');
+for (const img of ['founder', 'managing-director', 'head-investments', 'client-relations']) {
+  const p = `assets/img/leadership/${img}.jpg`;
+  fs.existsSync(path.join(ROOT, p)) ? ok(p) : bad(`MISSING ${p}`);
+}
+
+// Evaluate the real bundle's top level (react + framer-motion + the island)
+// in a minimal DOM. mount() early-returns because getElementById yields null,
+// so this proves the IIFE evaluates without a bundling/env regression.
+{
+  const vm = await import('node:vm');
+  const { MessageChannel } = await import('node:worker_threads');
+  const bundleSrc = fs.readFileSync(path.join(ROOT, 'js/vendor/leadership.bundle.js'), 'utf8');
+  const noopEl = () => ({ style: {}, classList: { add() {}, remove() {}, toggle() {}, contains: () => false },
+    addEventListener() {}, removeEventListener() {}, setAttribute() {}, getAttribute: () => null });
+  const document = { readyState: 'complete', getElementById: () => null, createElement: noopEl,
+    addEventListener() {}, removeEventListener() {}, dispatchEvent: () => true,
+    documentElement: noopEl(), head: noopEl(), body: noopEl(), querySelector: () => null, querySelectorAll: () => [] };
+  const window = { document, matchMedia: () => ({ matches: false, addEventListener() {}, removeEventListener() {} }),
+    addEventListener() {}, removeEventListener() {}, IntersectionObserver: class { observe() {} disconnect() {} },
+    requestAnimationFrame: () => 1, cancelAnimationFrame() {}, setInterval: () => 1, clearInterval() {},
+    setTimeout: () => 1, clearTimeout() {}, navigator: { userAgent: 'node' }, location: { href: 'http://localhost/' } };
+  window.window = window; window.self = window;
+  const ctx = { window, document, self: window, navigator: window.navigator, queueMicrotask: (f) => f(),
+    MessageChannel, performance, requestAnimationFrame: window.requestAnimationFrame,
+    setInterval: window.setInterval, clearInterval: window.clearInterval,
+    setTimeout: window.setTimeout, clearTimeout: window.clearTimeout, console };
+  ctx.globalThis = ctx;
+  vm.createContext(ctx);
+  try {
+    vm.runInContext(bundleSrc, ctx, { filename: 'leadership.bundle.js' });
+    ok('leadership.bundle.js top level evaluates without throwing');
+  } catch (err) {
+    bad(`leadership.bundle.js threw at top level: ${err.message}`);
+  }
+}
+
 // ── 5. HTTP smoke test ───────────────────────────────────────────
 head('5. HTTP responses');
 const TYPES = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.mjs': 'text/javascript',
@@ -212,3 +261,6 @@ server.close();
 console.log(`\n\x1b[1m${checks - failures}/${checks} checks passed\x1b[0m`);
 if (failures) { console.log(`\x1b[31m${failures} FAILING\x1b[0m`); process.exit(1); }
 console.log('\x1b[32mAll checks passed.\x1b[0m');
+// The bundle's React scheduler can leave a MessageChannel port open, which
+// would hold the event loop after every check has already run. Exit cleanly.
+process.exit(0);
