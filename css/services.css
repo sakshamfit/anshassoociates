@@ -1,0 +1,272 @@
+/* ═════════════════════════════════════════════════
+   ANSH ASSOCIATES — Services Section
+   Styles for the services section showcasing real estate offerings
+   ═════════════════════════════════════════════════ */
+
+/* Services Container */
+#services {
+    position: relative;
+    padding: var(--spacing-xl) 0;
+    background-color: var(--background-light);
+    overflow: hidden;
+}
+
+/* Services Header */
+.or-head,
+.serv-head {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.or-eyebrow,
+.serv-eyebrow {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(12px, 1.9vh, 18px);
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--primary-deep);
+    opacity: 0.9;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.or-heading,
+.serv-heading {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(24px, 4vh, 36px);
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    line-height: 1.2;
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--spacing-md);
+}
+
+.or-heading::after,
+.serv-heading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-deep);
+}
+
+.or-support,
+.serv-support {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.34em;
+    line-height: 1.6;
+    color: var(--text-dark);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Services Side */
+.or-side,
+.serv-side {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(10px, 1.56vh, 15px);
+    letter-spacing: 0.32em;
+    line-height: 1.62;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    opacity: 0.95;
+    display: block;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Services Wall */
+.or-wall,
+.serv-wall {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-lg);
+}
+
+.or-card,
+.serv-card {
+    background: var(--text-cream);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s ease;
+    flex: 1 1 280px;
+    max-width: 320px;
+    position: relative;
+    overflow: hidden;
+}
+
+.or-card:hover,
+.serv-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    background: var(--primary-deep);
+    color: var(--text-cream);
+}
+
+.or-card:hover .or-icon svg path,
+.serv-card:hover .serv-icon svg path {
+    stroke: var(--text-cream);
+}
+
+.or-card:hover .or-title,
+.serv-card:hover .serv-title {
+    color: var(--text-cream);
+}
+
+.or-card:hover .or-text,
+.serv-card:hover .serv-text {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.or-card::before,
+.serv-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--primary-deep);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.or-card:hover::before,
+.serv-card:hover::before {
+    opacity: 1;
+}
+
+.or-icon,
+.serv-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.or-icon svg,
+.serv-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.or-icon svg path,
+.serv-icon svg path {
+    stroke: var(--primary-deep);
+    fill: none;
+    stroke-width: 1.5;
+    transition: stroke 0.4s ease;
+}
+
+.or-title,
+.serv-title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(18px, 2.8vh, 24px);
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+    transition: color 0.4s ease;
+}
+
+.or-text,
+.serv-text {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.34em;
+    line-height: 1.6;
+    color: var(--text-dark);
+    opacity: 0.8;
+}
+
+/* Services Footer */
+.or-foot,
+.serv-foot {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+}
+
+.or-foot svg,
+.serv-foot svg {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto var(--spacing-sm);
+    display: block;
+}
+
+.or-foot svg path,
+.serv-foot svg path {
+    stroke: var(--primary-deep);
+    fill: none;
+    stroke-width: 1.1;
+}
+
+.or-foot p,
+.serv-foot p {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.34em;
+    line-height: 1.6;
+    color: var(--text-dark);
+    opacity: 0.8;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Reveal Animations */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-reveal].visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-reveal]:nth-child(2) { transition-delay: 0.2s; }
+[data-reveal]:nth-child(3) { transition-delay: 0.4s; }
+[data-reveal]:nth-child(4) { transition-delay: 0.6s; }
+[data-reveal]:nth-child(5) { transition-delay: 0.8s; }
+[data-reveal]:nth-child(6) { transition-delay: 1.0s; }
+
+/* Mobile Adjustments */
+@media (max-width: 1024px) {
+    .or-wall,
+    .serv-wall {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .or-card,
+    .serv-card {
+        flex: 1 1 90%;
+        max-width: none;
+    }
+
+    .or-side,
+    .serv-side {
+        font-size: clamp(9px, 1.4vh, 13px);
+    }
+}

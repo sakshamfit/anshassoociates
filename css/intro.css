@@ -1,0 +1,61 @@
+/* ══════════════════════════════════════════════════
+   ANSH ASSOCIATES — Intro Animation
+   Styles for the intro animation (simplified for real estate)
+   ══════════════════════════════════════════════════ */
+
+/* Intro Container */
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: var(--background-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Intro Vignette */
+.intro-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(248,244,227,0) 0%, rgba(245,245,220,0.8) 100%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+/* Logo Intro Container */
+#logo-intro {
+    position: relative;
+    z-index: 2;
+}
+
+/* Logo Intro Animation */
+#logo-intro img {
+    width: clamp(80px, 15vw, 120px);
+    height: auto;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+/* Intro Animation Complete */
+.intro-finished #intro {
+    pointer-events: none;
+}
+
+.intro-finished .intro-vignette {
+    opacity: 1;
+}
+
+.intro-finished #logo-intro img {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 1024px) {
+    #logo-intro img {
+        width: clamp(60px, 12vw, 100px);
+    }
+}

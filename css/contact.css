@@ -1,0 +1,490 @@
+/* ══════════════════════════════════════════════════
+   ANSH ASSOCIATES — Contact Section
+   Styles for the contact section with map, inquiry form, and contact details
+   ═══════════════════════════════════════════════════ */
+
+/* Contact Container */
+#contact {
+    position: relative;
+    padding: var(--spacing-xl) 0;
+    background-color: var(--background-light);
+    overflow: hidden;
+}
+
+/* Contact Header */
+.con-copy {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.ct-eyebrow {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(12px, 1.9vh, 18px);
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--primary-deep);
+    opacity: 0.9;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.ct-heading {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(24px, 4vh, 36px);
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    line-height: 1.2;
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--spacing-md);
+}
+
+.ct-heading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-deep);
+}
+
+.ct-support {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.34em;
+    line-height: 1.6;
+    color: var(--text-dark);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Contact Media */
+.con-media {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+}
+
+.con-media img {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.4s ease;
+}
+
+.con-media img:hover {
+    transform: scale(1.02);
+}
+
+/* Contact Information */
+.cin {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.cin-info {
+    background: var(--text-cream);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cin-info:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.cin-info:hover .cin-icon svg path {
+    stroke: var(--text-cream);
+}
+
+.cin-info:hover .cin-title {
+    color: var(--text-cream);
+}
+
+.cin-info:hover .cin-line {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cin-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--primary-deep);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.cin-info:hover::before {
+    opacity: 1;
+}
+
+.cin-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cin-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.cin-icon svg path {
+    stroke: var(--primary-deep);
+    fill: none;
+    stroke-width: 1.5;
+    transition: stroke 0.4s ease;
+}
+
+.cin-title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(18px, 2.8vh, 24px);
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+    transition: color 0.4s ease;
+}
+
+.cin-line {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.34em;
+    line-height: 1.6;
+    color: var(--text-dark);
+    opacity: 0.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.cin-note {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(12px, 1.9vh, 16px);
+    letter-spacing: 0.2em;
+    color: var(--primary-deep);
+}
+
+/* Contact Form */
+.con-form {
+    background: var(--text-cream);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s ease;
+    margin-top: var(--spacing-lg);
+}
+
+.con-form:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.con-form-h {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(18px, 2.8vh, 24px);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    display: inline-block;
+}
+
+.con-form-h::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 40px;
+    height: 2px;
+    background: var(--primary-deep);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.05em;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-xs);
+    display: block;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.05em;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-deep);
+    box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.ct-btn.submit-btn {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-size: clamp(16px, 2.5vh, 22px);
+}
+
+/* Contact Quote */
+.con-quote {
+    text-align: center;
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg);
+    background: var(--primary-deep);
+    color: var(--text-cream);
+    border-radius: var(--radius-lg);
+    position: relative;
+}
+
+.con-quote blockquote {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(18px, 2.8vh, 24px);
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.con-quote svg {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto var(--spacing-sm);
+    display: block;
+}
+
+.con-quote svg path {
+    stroke: var(--text-cream);
+    fill: none;
+    stroke-width: 1.1;
+}
+
+.con-quote-media {
+    margin-top: var(--spacing-md);
+    text-align: center;
+}
+
+.con-quote-media img {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    max-width: 100%;
+    height: auto;
+}
+
+/* Contact Location */
+.col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.col-photo img {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.col-center {
+    text-align: center;
+}
+
+.ct-eyebrow[data-i18n="ct.loc.eyebrow"] {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(12px, 1.9vh, 18px);
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--primary-deep);
+    opacity: 0.9;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.col-city {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(24px, 4vh, 36px);
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+.col-line {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.34em;
+    line-height: 1.6;
+    color: var(--text-dark);
+    opacity: 0.8;
+}
+
+.col-map {
+    text-align: center;
+}
+
+.col-map-img {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.4s ease;
+}
+
+.col-map-img:hover {
+    transform: scale(1.02);
+}
+
+.col-open {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--primary-deep);
+    color: var(--text-cream);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.col-open:hover {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.col-open:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.col-open svg {
+    width: 1.8em;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.col-open:hover svg {
+    transform: translateX(4px);
+}
+
+/* Contact Buttons */
+.ct-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--primary-deep);
+    color: var(--text-cream);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.ct-btn:hover {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.ct-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.ct-btn svg {
+    width: 1.6em;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ct-btn:hover svg {
+    transform: translateX(3px);
+}
+
+/* Reveal Animations */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-reveal].visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-reveal]:nth-child(2) { transition-delay: 0.2s; }
+[data-reveal]:nth-child(3) { transition-delay: 0.4s; }
+[data-reveal]:nth-child(4) { transition-delay: 0.6s; }
+[data-reveal]:nth-child(5) { transition-delay: 0.8s; }
+[data-reveal]:nth-child(6) { transition-delay: 1.0s; }
+
+/* Mobile Adjustments */
+@media (max-width: 1024px) {
+    .cin {
+        grid-template-columns: 1fr;
+    }
+
+    .con-form {
+        margin: 0 var(--spacing-sm);
+    }
+
+    .col {
+        grid-template-columns: 1fr;
+    }
+
+    .cin-info,
+    .con-form,
+    .con-quote,
+    .col-center,
+    .col-map {
+        margin: 0 var(--spacing-sm);
+    }
+}

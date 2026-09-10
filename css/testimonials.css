@@ -1,0 +1,261 @@
+/* ══════════════════════════════════════════════════
+   ANSH ASSOCIATES — Testimonials Section
+   Styles for the testimonials section showcasing client feedback
+   ═══════════════════════════════════════════════════ */
+
+/* Testimonials Container */
+#testimonials {
+    position: relative;
+    padding: var(--spacing-xl) 0;
+    background-color: var(--background-light);
+    overflow: hidden;
+}
+
+/* Testimonials Header */
+.test-head {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.test-eyebrow {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(12px, 1.9vh, 18px);
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--primary-deep);
+    opacity: 0.9;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.test-heading {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(24px, 4vh, 36px);
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    line-height: 1.2;
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--spacing-md);
+}
+
+.test-heading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-deep);
+}
+
+.test-support {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.34em;
+    line-height: 1.6;
+    color: var(--text-dark);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Testimonials Side */
+.test-side {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(10px, 1.56vh, 15px);
+    letter-spacing: 0.32em;
+    line-height: 1.62;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    opacity: 0.95;
+    display: block;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Testimonials Media */
+.test-media {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.test-block {
+    background: var(--text-cream);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.test-block:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.test-block:hover .test-icon svg path {
+    stroke: var(--text-cream);
+}
+
+.test-block:hover .test-title {
+    color: var(--text-cream);
+}
+
+.test-block:hover .test-text {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.test-block:hover .test-rating {
+    color: var(--primary-light);
+}
+
+.test-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--primary-deep);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.test-block:hover::before {
+    opacity: 1;
+}
+
+.test-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.test-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.test-icon svg path {
+    stroke: var(--primary-deep);
+    fill: none;
+    stroke-width: 1.5;
+    transition: stroke 0.4s ease;
+}
+
+.test-title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(18px, 2.8vh, 24px);
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+    transition: color 0.4s ease;
+}
+
+.test-rating {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.05em;
+    color: var(--primary-deep);
+    margin-bottom: var(--spacing-sm);
+}
+
+.test-text {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.34em;
+    line-height: 1.6;
+    color: var(--text-dark);
+    opacity: 0.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.test-meta {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: clamp(12px, 1.9vh, 16px);
+    letter-spacing: 0.2em;
+    color: var(--primary-deep);
+}
+
+/* Testimonials Footer */
+.test-foot {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+}
+
+.test-foot svg {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto var(--spacing-sm);
+    display: block;
+}
+
+.test-foot svg path {
+    stroke: var(--primary-deep);
+    fill: none;
+    stroke-width: 1.1;
+}
+
+.test-foot p {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: clamp(14px, 2.2vh, 20px);
+    letter-spacing: 0.34em;
+    line-height: 1.6;
+    color: var(--text-dark);
+    opacity: 0.8;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Reveal Animations */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-reveal].visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-reveal]:nth-child(2) { transition-delay: 0.2s; }
+[data-reveal]:nth-child(3) { transition-delay: 0.4s; }
+[data-reveal]:nth-child(4) { transition-delay: 0.6s; }
+[data-reveal]:nth-child(5) { transition-delay: 0.8s; }
+[data-reveal]:nth-child(6) { transition-delay: 1.0s; }
+
+/* Mobile Adjustments */
+@media (max-width: 1024px) {
+    .test-media {
+        grid-template-columns: 1fr;
+    }
+
+    .test-block {
+        margin: 0 var(--spacing-sm);
+    }
+
+    .test-side {
+        font-size: clamp(9px, 1.4vh, 13px);
+    }
+}
