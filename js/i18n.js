@@ -48,6 +48,7 @@ const en = {
 
   'search.label': 'Search properties',
   'search.placeholder': 'Search by name, city or feature…',
+  'search.submit': 'Search',
 
   'prop.empty': 'No properties match your search.',
   'prop.countLabel': 'Listings',
@@ -233,6 +234,7 @@ const hi = {
 
   'search.label': 'संपत्तियाँ खोजें',
   'search.placeholder': 'नाम, शहर या सुविधा से खोजें…',
+  'search.submit': 'खोजें',
 
   'prop.empty': 'आपकी खोज से कोई संपत्ति मेल नहीं खाती।',
   'prop.countLabel': 'संपत्तियाँ',
